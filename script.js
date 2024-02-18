@@ -85,9 +85,9 @@ const fruit = [
 
 function search(str) {
   let results = [];
-
   // TODO
-
+  str = input.value.toLowerCase();
+  results.push(fruit.filter((name) => name.toLowerCase().includes(str)));
   return results;
 }
 
