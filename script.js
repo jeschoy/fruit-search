@@ -84,11 +84,9 @@ const fruit = [
 ];
 
 function search(str) {
-  // create empty array for results
-  let results = [];
-  // push to array the matching fruits
-  results.push(
-    fruit.filter((fruitName) => fruitName.toLowerCase().includes(str))
+  // to get array of suggestions
+  let results = fruit.filter((fruitName) =>
+    fruitName.toLowerCase().includes(str)
   );
   return results;
 }
@@ -99,6 +97,7 @@ function searchHandler(e) {
   // to not display dropdown if input box is empty
   if (!searchedWord) {
     suggestions.innerHTML = '';
+    suggestions.classList.remove('longer-list');
   } else {
     // to reveal suggestions/autocomplete
     showSuggestions(search(searchedWord.toLowerCase()), searchedWord);
@@ -108,20 +107,23 @@ function searchHandler(e) {
 function showSuggestions(results, inputVal) {
   // to reset dropdown each time something is typed
   suggestions.innerHTML = '';
+  // if suggestions list is too long, add scrollbar
+  if (results.length >= 5) {
+    suggestions.classList.add('longer-list');
+  }
   // to add suggestions to page
-  results.forEach((list) =>
-    list.forEach((fruit) => {
-      const li = document.createElement('li');
-      li.innerText = fruit;
-      suggestions.appendChild(li);
-    })
-  );
+  results.forEach((fruit) => {
+    const li = document.createElement('li');
+    li.innerText = fruit;
+    suggestions.appendChild(li);
+  });
 }
 
 function useSuggestion(e) {
   // to add selected to the input box
   input.value = e.target.innerText;
   suggestions.innerHTML = '';
+  suggestions.classList.remove('longer-list');
 }
 
 input.addEventListener('keyup', searchHandler);
