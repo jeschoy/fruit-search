@@ -114,7 +114,9 @@ function showSuggestions(results, inputVal) {
 }
 
 function useSuggestion(e) {
+  // to add selected to the input box
   input.value = e.target.innerText;
+  suggestions.innerHTML = '';
 }
 
 input.addEventListener('keyup', searchHandler);

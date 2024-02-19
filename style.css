@@ -1,5 +1,6 @@
 * {
   /* box-sizing: border-box; */
+  background: linear-gradient(to right, rgb(214, 214, 56), rgb(244, 76, 9));
 }
 
 :focus {
