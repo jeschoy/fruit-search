@@ -94,13 +94,16 @@ function search(str) {
 }
 
 function searchHandler(e) {
+  // to get the value from the input bar
   const searchedWord = e.target.value;
-  // // to reveal suggestions/autocomplete
+  // to reveal suggestions/autocomplete
   showSuggestions(search(searchedWord.toLowerCase()), searchedWord);
 }
 
 function showSuggestions(results, inputVal) {
+  // to reset dropdown each time something is typed
   suggestions.innerHTML = '';
+  // to add suggestions to page
   results.forEach((list) =>
     list.forEach((fruit) => {
       const li = document.createElement('li');
@@ -108,11 +111,10 @@ function showSuggestions(results, inputVal) {
       suggestions.appendChild(li);
     })
   );
-  // TODO
 }
 
 function useSuggestion(e) {
-  // TODO
+  input.value = e.target.innerText;
 }
 
 input.addEventListener('keyup', searchHandler);
