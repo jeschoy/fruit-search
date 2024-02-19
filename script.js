@@ -96,8 +96,13 @@ function search(str) {
 function searchHandler(e) {
   // to get the value from the input bar
   const searchedWord = e.target.value;
-  // to reveal suggestions/autocomplete
-  showSuggestions(search(searchedWord.toLowerCase()), searchedWord);
+  // to not display dropdown if input box is empty
+  if (!searchedWord) {
+    suggestions.innerHTML = '';
+  } else {
+    // to reveal suggestions/autocomplete
+    showSuggestions(search(searchedWord.toLowerCase()), searchedWord);
+  }
 }
 
 function showSuggestions(results, inputVal) {
