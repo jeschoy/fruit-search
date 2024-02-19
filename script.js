@@ -84,18 +84,30 @@ const fruit = [
 ];
 
 function search(str) {
+  // create empty array for results
   let results = [];
-  // TODO
-  str = input.value.toLowerCase();
-  results.push(fruit.filter((name) => name.toLowerCase().includes(str)));
+  // push to array the matching fruits
+  results.push(
+    fruit.filter((fruitName) => fruitName.toLowerCase().includes(str))
+  );
   return results;
 }
 
 function searchHandler(e) {
-  // TODO
+  const searchedWord = e.target.value;
+  // // to reveal suggestions/autocomplete
+  showSuggestions(search(searchedWord.toLowerCase()), searchedWord);
 }
 
 function showSuggestions(results, inputVal) {
+  suggestions.innerHTML = '';
+  results.forEach((list) =>
+    list.forEach((fruit) => {
+      const li = document.createElement('li');
+      li.innerText = fruit;
+      suggestions.appendChild(li);
+    })
+  );
   // TODO
 }
 
